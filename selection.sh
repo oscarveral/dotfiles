@@ -8,8 +8,8 @@ set -o pipefail
 # Retrieve the script name and canonical path.
 get_dir $BASH_SOURCE
 
-# Set selecteable options dir names on this script directory.
-readonly DIRS=$(find $DIR -maxdepth 1 -type d -exec basename {} \; | grep -v "$(basename $DIR)")
+# Set selecteable options directory names on this script directory (excluding the .git directory).
+readonly DIRS=$(find $DIR -maxdepth 1 -type d -exec basename {} \; | grep -v "$(basename $DIR)" | sed 's/\.git//g')
 
 # Set a flag to control the loop.
 SHOULD_LOOP=true
