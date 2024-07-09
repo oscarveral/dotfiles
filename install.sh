@@ -27,12 +27,12 @@ log () {
 # --------------------------------------------------------- #
 # get_dir ()                                         		#
 # Retrieves the script name and canonical path.             #
-# Parameter: none                              				#
+# Parameter: $1 - $BASH_SOURCE expected.					#
 # Export: $SOURCE and $DIR with the script name and path.	#
 # --------------------------------------------------------- #
 get_dir() {
 	# Get current script.
-	SOURCE=${BASH_SOURCE[0]}
+	SOURCE="$1"
 	while [ -L "$SOURCE" ]; do # Resolve $SOURCE until the file is no longer a symlink.
 		DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 		SOURCE=$(readlink "$SOURCE")
@@ -56,7 +56,7 @@ panic () {
 }
 
 # Obtain $SOURCE y $DIR.
-get_dir
+get_dir $BASH_SOURCE
 
 # Set log file on current directory.
 LOGFILE="$DIR/install.log"

@@ -6,7 +6,7 @@ set -o nounset
 set -o pipefail
 
 # Retrieve the script name and canonical path.
-get_dir
+get_dir $BASH_SOURCE
 
 # Set selecteable options dir names on this script directory.
 readonly DIRS=$(find $DIR -maxdepth 1 -type d -exec basename {} \; | grep -v "$(basename $DIR)")
