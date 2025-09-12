@@ -11,6 +11,8 @@ ansi_art='
 
 clear
 printf "\n%s\n\n" "$ansi_art"
+timedatectl
+printf "\n"
 
 # Install dependencies.
 
