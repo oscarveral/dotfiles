@@ -13,6 +13,28 @@ DISK_PATH="/dev/$SELECTED_DISK"
 printf "Selected disk: %s (%s)\n" "$DISK_PATH" "${SELECTED_DISK_LINE#* }"
 gum confirm "Erase all data on $DISK_PATH and create new GPT partitions?" || exit 1
 
+# Function to close all cryptsetup containers opened.
+
+close_cryptsetup_containers() {
+    # List all mapped cryptsetup devices and close them
+    local mapper
+    for mapper in $(lsblk -rno NAME,TYPE | awk '$2=="crypt" {print $1}'); do
+        if [ -e "/dev/mapper/$mapper" ]; then
+            echo "Closing cryptsetup container: $mapper"
+            cryptsetup close "$mapper"
+        fi
+    done
+}
+
+# Close any existing cryptsetup containers before proceeding.
+close_cryptsetup_containers
+
+# Flush IO operations on the selected disk
+if command -v blockdev >/dev/null 2>&1; then
+    echo "Flushing IO buffers on $DISK_PATH"
+    blockdev --flushbufs "$DISK_PATH"
+fi
+
 # Partition disk on GPT scheme.
 
 EFI_PART_LABEL="efi"
@@ -20,14 +42,14 @@ SWAP_PART_LABEL="swap"
 LINUX_PART_LABEL="linux"
 parted --script "$DISK_PATH" -- \
     mklabel gpt \
-    mkpart primary fat32 1MiB 1GiB \
+    mkpart primary 1MiB 1GiB \
     set 1 boot on \
     set 1 esp on \
     name 1 "$EFI_PART_LABEL" \
-    mkpart primary linux-swap 1GiB 33GiB \
+    mkpart primary 1GiB 33GiB \
     set 2 swap on \
     name 2 "$SWAP_PART_LABEL" \
-    mkpart primary btrfs 33GiB 100% \
+    mkpart primary 33GiB 100% \
     name 3 "$LINUX_PART_LABEL" \
     print
 

@@ -9,3 +9,4 @@ set -e
 # Source preparation scripts.
 source "$MACHINE_PATH/guards.sh"
 source "$MACHINE_PATH/disk.sh"
+source "$MACHINE_PATH/encryption.sh"

@@ -12,4 +12,4 @@ done
 [ "$(uname -m)" != "x86_64" ] && abort "x86_64 CPU"
 
 # Cleared all guards.
-printf "%s\n" "Guards: OK"
+printf "%s\n\n" "Guards: OK"
