@@ -16,7 +16,7 @@ printf "\n"
 
 # Install dependencies.
 
-sudo pacman -S --noconfirm --needed git gum
+sudo pacman -S --noconfirm --needed git gum mokutil
 
 # Clone and setup dotfiles repository.
 
