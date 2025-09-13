@@ -45,9 +45,10 @@ unset PASSPHRASE
 
 # Export encrypted volume paths.
 
-CONTAINER_SWAP="/dev/mapper/crypt-swap"
-CONTAINER_LINUX="/dev/mapper/crypt-linux"
+CONTAINER_SWAP="/dev/mapper/swap"
+CONTAINER_LINUX="/dev/mapper/linux"
 
 # Print status.
 printf "\n"
 lsblk -o NAME,LABEL,PARTLABEL "$DISK"
+printf "\n"

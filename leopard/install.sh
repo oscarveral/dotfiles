@@ -10,3 +10,4 @@ set -e
 source "$MACHINE_PATH/guards.sh"
 source "$MACHINE_PATH/disk.sh"
 source "$MACHINE_PATH/encryption.sh"
+source "$MACHINE_PATH/filesystem.sh"
