@@ -18,5 +18,8 @@ if [ -d /sys/firmware/efi/efivars ]; then
   fi
 fi
 
+# Disable all swap devices.
+disable_swap
+
 # Cleared all guards.
 printf "%s\n\n" "Guards: OK"

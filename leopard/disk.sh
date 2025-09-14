@@ -13,20 +13,9 @@ DISK_PATH="/dev/$SELECTED_DISK"
 printf "Selected disk: %s (%s)\n" "$DISK_PATH" "${SELECTED_DISK_LINE#* }"
 gum confirm "Erase all data on $DISK_PATH and create new GPT partitions?" || exit 1
 
-# Function to close all cryptsetup containers opened.
-
-close_cryptsetup_containers() {
-    # List all mapped cryptsetup devices and close them
-    local mapper
-    for mapper in $(lsblk -rno NAME,TYPE | awk '$2=="crypt" {print $1}'); do
-        if [ -e "/dev/mapper/$mapper" ]; then
-            echo "Closing cryptsetup container: $mapper"
-            cryptsetup close "$mapper"
-        fi
-    done
-}
-
 # Close any existing cryptsetup containers before proceeding.
+
+umount_all_under_mnt
 close_cryptsetup_containers
 
 # Flush IO operations on the selected disk
