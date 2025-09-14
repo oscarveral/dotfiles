@@ -13,7 +13,6 @@ catch_errors() {
 trap catch_errors ERR
 
 abort() {
-  printf "\e[31mInstall requires: %s\e[0m\n" "$1"
+  printf "\e[31mInstall failed: %s\e[0m\n" "$1"
   printf "\n"
-  gum confirm "Proceed anyway on your own accord and without assistance?" || exit 1
 }
