@@ -38,3 +38,4 @@ mount -o noatime,compress=zstd,subvol=root "$CONTAINER_LINUX" /mnt || abort "mou
 mount --mkdir -o noatime,compress=zstd,subvol=home "$CONTAINER_LINUX" /mnt/home || abort "mount subvol home"
 mount --mkdir -o noatime,compress=zstd,subvol=log "$CONTAINER_LINUX" /mnt/var/log || abort "mount subvol log"
 mount --mkdir -o noatime,compress=zstd,subvol=pacman "$CONTAINER_LINUX" /mnt/var/cache/pacman || abort "mount subvol pacman"
+mount --mkdir "$PARTITION_EFI" /mnt/boot || abort "mount efi"

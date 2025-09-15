@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Common variables.
 
 DOTFILES_LOCAL_PATH="/root/dotfiles"
@@ -16,3 +18,4 @@ source "$CHROOT_SCRIPTS_PATH/error.sh"
 source "$CHROOT_SCRIPTS_PATH/timezone.sh"
 source "$CHROOT_SCRIPTS_PATH/locale.sh"
 source "$CHROOT_SCRIPTS_PATH/network.sh"
+source "$CHROOT_SCRIPTS_PATH/mkinitcpio.sh"

@@ -13,7 +13,8 @@ pacstrap -K /mnt \
     systemd-ukify \
     mkinitcpio \
     git \
-    gum 
+    gum \
+    efibootmgr || abort "pacstrap"
 
 # Generate the fstab file.
 
