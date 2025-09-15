@@ -18,6 +18,7 @@ cp "$MACHINE_PATH/files/etc/crypttab" /etc/crypttab || abort "copy crypttab"
 cp "$MACHINE_PATH/files/etc/crypttab.initramfs" /etc/crypttab.initramfs || abort "copy crypttab.initramfs"
 
 # Generate the unified kernel image.
+
 printf "Generating unified kernel image...\n\n"
 if [ ! -d /boot/EFI/Linux ]; then
     mkdir -p /boot/EFI/Linux || abort "create /boot/EFI/Linux"
@@ -25,7 +26,10 @@ fi
 mkinitcpio -p linux || abort "mkinitcpio"
 
 # Create the EFI boot entry.
+
 printf "Creating EFI boot entry...\n\n"
-# Search for the corresponding EFI system partition disk path.
+
+# Remove previous EFI boot entries and add the corresponding EFI system partition disk path.
+efibootmgr --remove-all --label "Arch Linux" || true
 EFI_PARTITION_DISK=$(findmnt -no SOURCE /boot)
 efibootmgr --create --disk "$EFI_PARTITION_DISK" --part 1 --loader '\EFI\Linux\arch-linux.efi' --label "Arch Linux" --unicode
