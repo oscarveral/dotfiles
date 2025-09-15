@@ -19,5 +19,5 @@ pacstrap -K /mnt \
 # Generate the fstab file.
 
 printf "\n\nGenerating fstab file...\n\n"
-genfstab -U /mnt
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -L /mnt
+genfstab -L /mnt >> /mnt/etc/fstab
