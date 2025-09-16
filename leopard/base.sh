@@ -14,7 +14,8 @@ pacstrap -K /mnt \
     mkinitcpio \
     git \
     gum \
-    efibootmgr || abort "pacstrap"
+    efibootmgr \
+    plymouth || abort "pacstrap"
 
 # Generate the fstab file.
 
