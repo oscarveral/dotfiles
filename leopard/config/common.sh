@@ -16,3 +16,4 @@ source "$CHROOT_SCRIPTS_PATH/error.sh"
 # Load execution scripts.
 
 source "$CHROOT_SCRIPTS_PATH/ntp.sh"
+source "$CHROOT_SCRIPTS_PATH/hostname.sh"
