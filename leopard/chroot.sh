@@ -18,3 +18,9 @@ chmod -R +x "/mnt$DOTFILES_CHROOT_PATH"
 # Change to chroot environment.
 
 arch-chroot /mnt $DOTFILES_CHROOT_PATH/$MACHINE/virtual/common.sh || abort "enter chroot environment"
+
+# Mantain only boot.sh script in the chroot environment.
+
+cp "$DOTFILES_LOCAL_PATH/boot.sh" /mnt/root/boot.sh || abort "copy boot script"
+chmod +x /mnt/root/boot.sh || abort "make boot script executable"
+rm -rf "/mnt$DOTFILES_CHROOT_PATH" || abort "remove dotfiles from chroot environment"
