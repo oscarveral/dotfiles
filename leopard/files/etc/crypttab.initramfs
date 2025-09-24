@@ -1,0 +1,2 @@
+linux /dev/disk/by-label/crypt-linux none
+swap /dev/disk/by-label/crypt-swap none swap

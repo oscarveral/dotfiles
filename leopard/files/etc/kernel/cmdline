@@ -1,0 +1,4 @@
+root=/dev/mapper/linux rw
+rootflags=subvol=/root
+resume=/dev/mapper/swap
+splash
