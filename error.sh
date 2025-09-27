@@ -12,6 +12,7 @@ catch_errors() {
 }
 
 trap catch_errors ERR
+trap catch_errors INT QUIT
 
 abort() {
   printf "\e[31mInstall failed: %s\e[0m\n" "$1"
