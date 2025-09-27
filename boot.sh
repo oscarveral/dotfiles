@@ -69,3 +69,6 @@ elif [ "$MODE" == "config" ]; then
 elif [ "$MODE" == "virtual" ]; then
   source "$MACHINE_PATH/virtual.sh"
 fi
+
+# Delete the dotfiles repo after installation.
+rm -rf "$DOTFILES_LOCAL_PATH"
