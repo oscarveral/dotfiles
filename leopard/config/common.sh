@@ -17,4 +17,5 @@ source "$SCRIPTS_PATH/error.sh"
 
 source "$SCRIPTS_PATH/ntp.sh"
 source "$SCRIPTS_PATH/hostname.sh"
+source "$SCRIPTS_PATH/packages.sh"
 source "$SCRIPTS_PATH/user.sh"
