@@ -28,6 +28,7 @@ if [ -d /home/oscar/dotfiles ]; then
 fi
 cp -r "$DOTFILES_LOCAL_PATH" /home/oscar/dotfiles || abort "copy dotfiles to user oscar home"
 chown -R oscar:oscar /home/oscar/dotfiles || abort "change owner of dotfiles to user oscar"
+chmod -R 744 /home/oscar/dotfiles || abort "set perms of dotfiles to 744"
 
 # Set up the user's home directory with stow.
 
