@@ -66,9 +66,12 @@ if [ "$MODE" == "install" ]; then
   source "$MACHINE_PATH/install.sh"
 elif [ "$MODE" == "config" ]; then
   source "$MACHINE_PATH/config.sh"
-elif [ "$MODE" == "virtual" ]; then
-  source "$MACHINE_PATH/virtual.sh"
 fi
 
 # Delete the dotfiles repo after installation.
 rm -rf "$DOTFILES_LOCAL_PATH"
+
+# End message.
+
+printf "\n%s\n" "Installation completed successfully. Dont forget to remove this script. Goodbye!"
+printf "\n"
