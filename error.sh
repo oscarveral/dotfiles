@@ -6,6 +6,7 @@ catch_errors() {
   if command -v gum >/dev/null && gum confirm "Retry installation?"; then
     bash "$DOTFILES_LOCAL_PATH/boot.sh"
   else
+  rm -rf "$DOTFILES_LOCAL_PATH"
   printf "%s\n" "You can retry later. Goodbye!"
   fi
 }
