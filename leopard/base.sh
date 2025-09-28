@@ -15,7 +15,8 @@ pacstrap -K /mnt \
     git \
     gum \
     efibootmgr \
-    plymouth || abort "pacstrap"
+    plymouth \
+    nvidia-open || abort "pacstrap"
 
 # Generate the fstab file.
 

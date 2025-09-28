@@ -4,4 +4,5 @@
 
 pacman -S --noconfirm --needed \
     stow \
-    polkit
+    polkit \
+    hyprland \
