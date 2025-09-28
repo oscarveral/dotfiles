@@ -38,5 +38,5 @@ chmod -R 744 "$USER_HOME/dotfiles" || abort "set perms of dotfiles to 744"
 
 # Set up the user's home directory with stow.
 
-su oscar -c "cd $USER_HOME/dotfiles/leopard/files/home && stow -t $USER_HOME -R oscar" || abort "stow user oscar home files"
+su oscar -c "cd $USER_HOME/dotfiles/leopard/files/home && stow --no-folding -t $USER_HOME -R oscar" || abort "stow user oscar home files"
 rm -rf "$USER_HOME"/.bash_history
