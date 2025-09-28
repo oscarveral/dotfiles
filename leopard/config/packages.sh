@@ -6,4 +6,6 @@ pacman -S --noconfirm --needed \
     stow \
     polkit \
     hyprland \
-    ly
+    ly \
+    uwsm \
+    libnewt
