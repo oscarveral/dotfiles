@@ -3,4 +3,5 @@
 # Install more packages.
 
 pacman -S --noconfirm --needed \
-    stow 
+    stow \
+    polkit
