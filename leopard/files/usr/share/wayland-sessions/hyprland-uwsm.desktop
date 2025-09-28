@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Rawland
+Name=Hyprland
 Comment=An intelligent dynamic tiling Wayland compositor.
-Exec=Hyperland
+Exec=uwsm start -- hyprland.desktop
+TryExec=uwsm
 DesktopNames=Hyprland
 Type=Application
-Keywords=tiling;wayland;compositor;
